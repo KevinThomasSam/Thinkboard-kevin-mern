@@ -7,8 +7,10 @@ import NoteDetailPage from "./pages/NoteDetailPage"
 
 const App = () => {
   return (
-    <div className="relative h-full w-full">
-      <div className = "absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_60%,#00ff9d40_100%)]"/>
+    <div className="page-shell">
+      <div className="pointer-events-none fixed inset-0 -z-10 bg-base-300" />
+      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[32rem] bg-[radial-gradient(circle_at_top,#a3e6351f,transparent_65%)]" />
+      <div className="pointer-events-none fixed -right-32 top-48 -z-10 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
         
       <Routes>
         <Route path="/" element={<HomePage /> } />

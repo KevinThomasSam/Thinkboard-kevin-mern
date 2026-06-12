@@ -31,7 +31,7 @@ const CreatePage = () => {
         catch (error) {
             console.log(error);
             if (error.response && error.response.status === 429) {
-                toast.error("You are being rate limited. Please wait and try again.",{duration: 5000, icon:"⏳"});
+                toast.error("You are being rate limited. Please wait and try again.", { duration: 5000 });
             } else {
                 toast.error("Error creating note.");
             }
@@ -42,18 +42,19 @@ const CreatePage = () => {
         }
     };
 
-    return <div className="min-h-screen bg-base-200">
-        <div className="container mx-auto px-4 py-8">
-            <div className="max-w-2xl mx-auto p-6 rounded-lg shadow-md">
-
-                <Link to="/" className="btn btn-ghost m-6">
+    return <div className="min-h-screen">
+        <div className="page-container">
+            <div className="mx-auto max-w-2xl">
+                <Link to="/" className="btn btn-ghost btn-sm mb-5 rounded-xl">
                     <ArrowLeftIcon className="h-5 w-5" />
                     Back to Notes
                 </Link>
 
-                <div className="card-bg-base-100">
-                    <div className="card-body">
-                        <h2 className="card-title text-2xl mb-4">Create a New Note</h2>
+                <div className="surface-card">
+                    <div className="card-body p-6 sm:p-8">
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">New thought</p>
+                        <h2 className="card-title mb-2 text-3xl tracking-tight">Create a note</h2>
+                        <p className="mb-4 text-sm text-base-content/55">Give your idea a clear title, then let it unfold.</p>
                         <form onSubmit={handleSubmit}>
 
                             <div className="form-control mb-4">
@@ -63,7 +64,7 @@ const CreatePage = () => {
                                         <input
                                             type="text"
                                             placeholder="Note Title"
-                                            className="input input-bordered"
+                                            className="input input-bordered field-control"
                                             value={title}
                                             onChange={(e) => setTitle(e.target.value)}
                                             />
@@ -73,17 +74,16 @@ const CreatePage = () => {
                                 <label className= "label">
                                     <span className="label-text">Content</span>
                                 </label>
-                                        <input
-                                            type="text"
+                                        <textarea
                                             placeholder="Write your note here..."
-                                            className="textarea textarea-bordered h-32"
+                                            className="textarea textarea-bordered field-control h-40 resize-none"
                                             value={content}
                                             onChange={(e) => setContent(e.target.value)}
                                             />
                             </div>
 
-                            <div className="card-actions justify-end">
-                                    <button type="submit" className="btn btn-primary" disabled={loading}>
+                            <div className="card-actions mt-6 justify-end">
+                                    <button type="submit" className="btn btn-primary rounded-xl px-6" disabled={loading}>
                                         {loading ? "Creating..." : "Create Note"}
                                     </button>
                                 </div>

@@ -21,18 +21,18 @@ const Notecard = ({ note,setNotes }) => {
     }
   return (
     <Link to={`/note/${note._id}`}
-        className="card bg-base-100 shadow-md hover:shadow-lg transition-shadow duration-200
-        border-t-4 border-solid border-[#00ff9d]">
-        <div className="card-body">
-            <h3 className="card-title">{note.title}</h3>
-            <p className="text-base-content/70 line-clamp-3">{note.content}</p>
-            <div className="card-actions justify-between items-center mt-4">
-                <span className="text-sm text-base-content/60">{formatDate(new Date(note.createdAt))}</span>
+        className="group card border border-base-content/10 bg-base-100/80 shadow-lg shadow-black/5 transition duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5">
+        <div className="card-body gap-3 p-5">
+            <div className="mb-1 h-1 w-10 rounded-full bg-primary transition-all duration-300 group-hover:w-16" />
+            <h3 className="card-title line-clamp-1 text-lg">{note.title}</h3>
+            <p className="min-h-16 text-sm leading-6 text-base-content/65 line-clamp-3">{note.content}</p>
+            <div className="card-actions mt-3 items-center justify-between border-t border-base-content/10 pt-4">
+                <span className="text-xs font-medium uppercase tracking-wide text-base-content/45">{formatDate(new Date(note.createdAt))}</span>
                 <div className="flex items-center gap-1">
-                    <div className="btn btn-ghost btn-xs text-info">
+                    <div className="btn btn-ghost btn-xs rounded-lg text-primary">
                         <PenSquareIcon className="w-4 h-4 " />
                     </div>
-                    <button className="btn btn-ghost btn-xs text-error" onClick={(e) => handleDelete(e, note._id)}>
+                    <button className="btn btn-ghost btn-xs rounded-lg text-error" onClick={(e) => handleDelete(e, note._id)}>
                         <Trash2Icon className="w-4 h-4" />
                     </button>
                 </div>

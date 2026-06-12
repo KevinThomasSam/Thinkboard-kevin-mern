@@ -65,7 +65,7 @@ const handleSave = async () => {
     console.log("Note ID from URL:", id);
 
     if (loading) {
-        return ( <div className="min-h-screen bg-base-200 flex items-center justify-center">
+        return ( <div className="min-h-screen flex items-center justify-center">
             <LoaderIcon className="animate-spin size-6 text-primary" />
         </div>
     )
@@ -76,22 +76,23 @@ const handleSave = async () => {
     }
 
     return (
-        <div className="min-h-screen bg-base-200">
-            <div className="container mx-auto px-4 py-8">
+        <div className="min-h-screen">
+            <div className="page-container">
                 <div className="max-w-2xl mx-auto">
                     <div className="flex items-center justify-between mb-6">
-                        <Link to="/" className="btn btn-ghost ">
+                        <Link to="/" className="btn btn-ghost btn-sm rounded-xl">
                             <ArrowLeftIcon className="size-5" />
                             Back to Notes
                         </Link>
-                        <button onClick={handleDelete} className="btn btn-error btn-outline">
+                        <button onClick={handleDelete} className="btn btn-error btn-outline btn-sm rounded-xl">
                             <Trash2Icon className="size-5" />
                             Delete Note
                         </button>
                     </div>
 
-                    <div className="card bg-base-100 ">
-                        <div className="card-body">
+                    <div className="surface-card">
+                        <div className="card-body p-6 sm:p-8">
+                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Edit note</p>
                             <div className="form-control mb-4">
                                 <label className="label">
                                     <span className="label-text">Title</span>
@@ -99,7 +100,7 @@ const handleSave = async () => {
                                 <input
                                     type="text"
                                     placeholder="Note Title"
-                                    className="input input-bordered"
+                                    className="input input-bordered field-control"
                                     value={note.title}
                                     onChange={(e) => setNote({ ...note, title: e.target.value })}
                                 />
@@ -109,15 +110,15 @@ const handleSave = async () => {
                                     <span className="label-text">Content</span>
                                 </label>
                             <textarea
-                                className="textarea textarea-bordered h-32"
+                                className="textarea textarea-bordered field-control h-48 resize-none"
                                 placeholder="Write your note content here..."
                                 value={note.content}
                                 onChange={(e) => setNote({ ...note, content: e.target.value })}
                             />
                         </div>
                            
-                            <div className="card-actions justify-end">
-                                <button className={`btn btn-primary ${saving ? "loading" : ""}`} onClick={handleSave}>
+                            <div className="card-actions mt-6 justify-end">
+                                <button className={`btn btn-primary rounded-xl px-6 ${saving ? "loading" : ""}`} onClick={handleSave}>
                                     {saving ? "Saving..." : "Save Changes"}
                                 </button>
                             </div>

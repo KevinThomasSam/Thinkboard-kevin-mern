@@ -70,6 +70,11 @@ const handleSave = async () => {
         </div>
     )
 }
+
+    if (!note) {
+        return null;
+    }
+
     return (
         <div className="min-h-screen bg-base-200">
             <div className="container mx-auto px-4 py-8">

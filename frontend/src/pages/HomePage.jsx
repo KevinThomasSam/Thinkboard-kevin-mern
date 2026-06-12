@@ -16,7 +16,11 @@ const HomePage = () => {
         const fetchNotes = async () => {
             try {
                 const res = await api.get("/notes");
-                console.log(res.data);  
+
+                if (!Array.isArray(res.data)) {
+                    throw new Error("The notes API returned an invalid response.");
+                }
+
                 setNotes(res.data);
                 setIsRateLimited(false);  
             } catch (error) {                
